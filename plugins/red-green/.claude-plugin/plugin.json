@@ -7,6 +7,5 @@
     "email": "stevengmjr@gmail.com"
   },
   "license": "MIT",
-  "keywords": ["tdd", "testing", "red-green-refactor", "test-driven"],
-  "category": "development"
+  "keywords": ["tdd", "testing", "red-green-refactor", "test-driven"]
 }

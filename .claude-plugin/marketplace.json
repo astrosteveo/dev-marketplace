@@ -6,8 +6,8 @@
     "pluginRoot": "./plugins"
   },
   "owner": {
-    "name": "Your Name",
-    "email": "your-email@example.com"
+    "name": "AstroSteveo",
+    "email": "stevengmjr@gmail.com@example.com"
   },
   "plugins": [
     {
@@ -16,7 +16,7 @@
       "description": "An example plugin demonstrating marketplace structure",
       "version": "1.0.0",
       "author": {
-        "name": "Your Name"
+        "name": "AstroSteveo"
       },
       "keywords": ["example", "starter", "template"],
       "category": "utilities"
@@ -27,7 +27,7 @@
       "description": "Automated code review with best practices and suggestions",
       "version": "1.0.0",
       "author": {
-        "name": "Your Name"
+        "name": "AstroSteveo"
       },
       "keywords": ["code-review", "quality", "best-practices"],
       "category": "development"
@@ -38,7 +38,7 @@
       "description": "Test-Driven Development framework with Red-Green-Refactor workflow",
       "version": "1.0.0",
       "author": {
-        "name": "Your Name"
+        "name": "AstroSteveo"
       },
       "keywords": ["tdd", "testing", "red-green-refactor", "test-driven"],
       "category": "development"

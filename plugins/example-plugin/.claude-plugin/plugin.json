@@ -3,11 +3,11 @@
   "description": "An example plugin demonstrating Claude Code plugin structure",
   "version": "1.0.0",
   "author": {
-    "name": "Your Name",
-    "email": "your-email@example.com"
+    "name": "AstroSteveo",
+    "email": "stevengmjr@gmail.com@example.com"
   },
-  "homepage": "https://github.com/your-username/dev-marketplace",
-  "repository": "https://github.com/your-username/dev-marketplace",
+  "homepage": "https://github.com/astrosteveo/dev-marketplace",
+  "repository": "https://github.com/astrosteveo/dev-marketplace",
   "license": "MIT",
   "keywords": ["example", "starter", "template"],
   "category": "utilities"

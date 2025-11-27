@@ -7,7 +7,7 @@ A Claude Code plugin marketplace for development and testing.
 Add this marketplace to Claude Code:
 
 ```
-/plugin marketplace add your-username/dev-marketplace
+/plugin marketplace add astrosteveo/dev-marketplace
 ```
 
 Or for local development:

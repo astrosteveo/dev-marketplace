@@ -7,34 +7,12 @@
   },
   "owner": {
     "name": "AstroSteveo",
-    "email": "stevengmjr@gmail.com@example.com"
+    "email": "stevengmjr@gmail.com"
   },
   "plugins": [
     {
-      "name": "example-plugin",
-      "source": "./plugins/example-plugin",
-      "description": "An example plugin demonstrating marketplace structure",
-      "version": "1.0.0",
-      "author": {
-        "name": "AstroSteveo"
-      },
-      "keywords": ["example", "starter", "template"],
-      "category": "utilities"
-    },
-    {
-      "name": "code-reviewer",
-      "source": "./plugins/code-reviewer",
-      "description": "Automated code review with best practices and suggestions",
-      "version": "1.0.0",
-      "author": {
-        "name": "AstroSteveo"
-      },
-      "keywords": ["code-review", "quality", "best-practices"],
-      "category": "development"
-    },
-    {
-      "name": "tdd-framework",
-      "source": "./plugins/tdd-framework",
+      "name": "red-green",
+      "source": "./plugins/red-green",
       "description": "Test-Driven Development framework with Red-Green-Refactor workflow",
       "version": "1.0.0",
       "author": {

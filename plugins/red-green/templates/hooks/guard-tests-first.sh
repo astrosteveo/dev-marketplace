@@ -1,8 +1,14 @@
 #!/bin/bash
 # Warns when writing implementation without corresponding tests
 # Part of the Red-Green-Refactor enforcement system
+# Use --force flag to override (for non-testable code like visual/UI work)
 
 FILE_PATH="${CLAUDE_TOOL_INPUT_FILE_PATH:-$1}"
+
+# Check for --force flag to override the guard
+if [[ "$*" == *"--force"* ]] || [[ "${CLAUDE_HOOK_FORCE:-}" == "true" ]]; then
+    exit 0
+fi
 
 # Source code extensions to check
 SOURCE_EXTENSIONS="cs|js|ts|jsx|tsx|py|go|rs|java|cpp|c|rb|php|swift|kt|scala|ex|exs|clj|hs|ml|fs|vue|svelte"
@@ -65,7 +71,7 @@ if [[ "$TEST_FOUND" == false ]]; then
     cat << 'EOF'
 {
   "continue": true,
-  "systemMessage": "Warning: No test file found for this implementation.\n\nRed-Green workflow requires tests FIRST:\n1. Write failing test (Red phase)\n2. Then write minimal implementation (Green phase)\n\nConsider writing tests before implementing."
+  "systemMessage": "Warning: No test file found for this implementation.\n\nRed-Green workflow requires tests FIRST:\n1. Write failing test (Red phase)\n2. Then write minimal implementation (Green phase)\n\nIf this is non-testable code (visual/UI), ask the user if they want to use --force to skip this check."
 }
 EOF
 fi

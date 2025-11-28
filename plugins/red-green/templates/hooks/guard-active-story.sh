@@ -1,9 +1,15 @@
 #!/bin/bash
 # Blocks writing implementation code without an ACTIVE story in ROADMAP.md
 # Part of the Red-Green-Refactor enforcement system
+# Use --force flag to override (for non-testable code like visual/UI work)
 
 # Tool input comes via environment or we parse from context
 FILE_PATH="${CLAUDE_TOOL_INPUT_FILE_PATH:-$1}"
+
+# Check for --force flag to override the guard
+if [[ "$*" == *"--force"* ]] || [[ "${CLAUDE_HOOK_FORCE:-}" == "true" ]]; then
+    exit 0
+fi
 
 # Source code extensions to check (implementation files)
 SOURCE_EXTENSIONS="cs|js|ts|jsx|tsx|py|go|rs|java|cpp|c|h|hpp|rb|php|swift|kt|scala|ex|exs|clj|hs|ml|fs|vue|svelte"
@@ -42,7 +48,7 @@ if [[ ! -f "$ROADMAP" ]]; then
     cat << 'EOF'
 {
   "decision": "block",
-  "reason": "ROADMAP.md not found. Create it with an ACTIVE story before writing implementation code.\n\nWorkflow: Research -> Plan -> Add to ROADMAP.md -> Test (Red) -> Implement (Green)"
+  "reason": "ROADMAP.md not found. Create it with an ACTIVE story before writing implementation code.\n\nWorkflow: Research -> Plan -> Add to ROADMAP.md -> Test (Red) -> Implement (Green)\n\nIf this is non-testable code (visual/UI), ask the user to approve using --force to override."
 }
 EOF
     exit 0
@@ -57,7 +63,7 @@ if [[ -z "$ACTIVE_CONTENT" ]] || [[ "$ACTIVE_CONTENT" == "None" ]]; then
     cat << 'EOF'
 {
   "decision": "block",
-  "reason": "No ACTIVE story in ROADMAP.md. Cannot write implementation code without an active story.\n\nTo proceed:\n1. Use 'plan' skill to create stories\n2. Mark a story as ACTIVE in ROADMAP.md\n3. Use 'test-writer' skill to write failing tests first\n4. Then implement\n\nThis enforces: Research -> Plan -> Red -> Green -> Refactor -> Validate"
+  "reason": "No ACTIVE story in ROADMAP.md. Cannot write implementation code without an active story.\n\nTo proceed:\n1. Plan and add stories to ROADMAP.md\n2. Mark a story as ACTIVE in ROADMAP.md\n3. Write failing tests first (Red phase)\n4. Then implement (Green phase)\n\nIf this is non-testable code (visual/UI), ask the user to approve using --force to override."
 }
 EOF
     exit 0

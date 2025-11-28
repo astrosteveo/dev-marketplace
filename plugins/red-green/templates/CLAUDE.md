@@ -1,17 +1,17 @@
-# Red-Green Workflow
+# Project Guidelines
 
-Read ROADMAP.md at session start. Know what's active.
+## Workflow: Plan Before Code
 
-## Phases
+This project uses Red-Green TDD. Before writing implementation code:
 
-1. **Research** - Understand before acting. No code.
-2. **Plan** - Break into stories. Add to ROADMAP.md. No code.
-3. **Implement** - Tests first. Red → Green → Refactor. Repeat until story done.
-4. **Validate** - Verify. Clean up. Commit.
+1. **Discuss** - Understand what we're building
+2. **Plan** - Add a story to `## Active` in ROADMAP.md
+3. **Test** - Write a failing test first
+4. **Implement** - Make the test pass
+5. **Complete** - Move story to done, clear Active
 
 ## Rules
 
-- No coding without an ACTIVE story in ROADMAP.md
-- New ideas → Research → Plan → Add to roadmap
-- Never skip phases, even if asked
-- Update ROADMAP.md as work progresses
+- No implementation code without an active story in ROADMAP.md
+- Tests are always allowed (write them first)
+- One story at a time

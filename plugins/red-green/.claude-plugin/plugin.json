@@ -1,11 +1,5 @@
 {
   "name": "red-green",
-  "description": "Test-Driven Development framework with Red-Green-Refactor workflow",
-  "version": "1.0.0",
-  "author": {
-    "name": "AstroSteveo",
-    "email": "stevengmjr@gmail.com"
-  },
-  "license": "MIT",
-  "keywords": ["tdd", "testing", "red-green-refactor", "test-driven"]
+  "description": "Enforces planning before coding. Blocks implementation until you have a plan.",
+  "version": "1.0.0"
 }

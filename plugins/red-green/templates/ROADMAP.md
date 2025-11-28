@@ -1,18 +1,7 @@
-# Roadmap
-
 ## Active
 
-<!-- Story currently being worked on -->
-
-## Current Epic: [Name]
-
-**Goal**: [outcome]
-
-### Stories
-
-- [ ] Story 1 - [test criteria]
-- [ ] Story 2 - [test criteria]
+None
 
 ## Backlog
 
-<!-- Future epics and ideas -->
+- (Add your planned features/stories here)

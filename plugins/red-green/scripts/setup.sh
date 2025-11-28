@@ -44,13 +44,34 @@ mkdir -p "$TARGET_DIR"
 
 # Copy templates
 echo "Copying templates..."
-cp -rn "$TEMPLATE_DIR"/* "$TARGET_DIR"/ 2>/dev/null || cp -r "$TEMPLATE_DIR"/* "$TARGET_DIR"/
+
+# Copy CLAUDE.md and ROADMAP.md to project root
+for file in CLAUDE.md ROADMAP.md; do
+    if [[ -f "$TEMPLATE_DIR/$file" ]]; then
+        cp -n "$TEMPLATE_DIR/$file" "$TARGET_DIR/.." 2>/dev/null || cp "$TEMPLATE_DIR/$file" "$TARGET_DIR/.."
+    fi
+done
+
+# Copy remaining templates to .claude/
+for item in "$TEMPLATE_DIR"/*; do
+    basename_item="$(basename "$item")"
+    if [[ "$basename_item" != "CLAUDE.md" && "$basename_item" != "ROADMAP.md" ]]; then
+        cp -rn "$item" "$TARGET_DIR"/ 2>/dev/null || cp -r "$item" "$TARGET_DIR"/
+    fi
+done
 
 echo ""
 echo -e "${GREEN}Red-Green TDD Framework installed!${NC}"
 echo ""
 echo "Created:"
-find "$TARGET_DIR" -type f -name "*.md" -o -name "*.json" | while read -r file; do
+# List files in project root
+for file in CLAUDE.md ROADMAP.md; do
+    if [[ -f "$TARGET_DIR/../$file" ]]; then
+        echo "  - $file"
+    fi
+done
+# List files in .claude/
+find "$TARGET_DIR" -type f -name "*.md" -o -name "*.json" 2>/dev/null | while read -r file; do
     echo "  - ${file#$PWD/}"
 done
 

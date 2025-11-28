@@ -24,7 +24,7 @@ if [[ -n "$ACTIVE_CONTENT" ]] && [[ "$ACTIVE_CONTENT" != "None" ]]; then
     cat << 'EOF'
 {
   "continue": true,
-  "systemMessage": "Note: There's still an ACTIVE story in ROADMAP.md.\n\nBefore committing, ensure:\n1. All tests pass (run Unity tests)\n2. Story acceptance criteria are met\n3. Use 'validate' skill to complete the story properly\n\nThis marks the story complete and creates a clean commit."
+  "systemMessage": "Note: There's still an ACTIVE story in ROADMAP.md.\n\nBefore committing, ensure:\n1. All tests pass\n2. Story acceptance criteria are met\n3. Complete the Validate phase properly\n\nThis marks the story complete and creates a clean commit."
 }
 EOF
 fi

@@ -5,18 +5,31 @@
 # Tool input comes via environment or we parse from context
 FILE_PATH="${CLAUDE_TOOL_INPUT_FILE_PATH:-$1}"
 
-# Skip if not a .cs file
-if [[ ! "$FILE_PATH" == *.cs ]]; then
+# Source code extensions to check (implementation files)
+SOURCE_EXTENSIONS="cs|js|ts|jsx|tsx|py|go|rs|java|cpp|c|h|hpp|rb|php|swift|kt|scala|ex|exs|clj|hs|ml|fs|vue|svelte"
+
+# Skip non-source files (configs, docs, etc.)
+if [[ ! "$FILE_PATH" =~ \.($SOURCE_EXTENSIONS)$ ]]; then
     exit 0
 fi
 
 # Skip test files - those are always allowed (Red phase)
-if [[ "$FILE_PATH" == *"/Tests/"* ]] || [[ "$FILE_PATH" == *"Tests.cs" ]]; then
+# Common test patterns across languages
+FILENAME=$(basename "$FILE_PATH")
+DIRPATH=$(dirname "$FILE_PATH")
+
+# Check directory patterns
+if [[ "$DIRPATH" == *"/test/"* ]] || [[ "$DIRPATH" == *"/tests/"* ]] || \
+   [[ "$DIRPATH" == *"/spec/"* ]] || [[ "$DIRPATH" == *"/__tests__/"* ]] || \
+   [[ "$DIRPATH" == *"/Test/"* ]] || [[ "$DIRPATH" == *"/Tests/"* ]]; then
     exit 0
 fi
 
-# Skip if not in Assets/Scripts (allow other paths)
-if [[ ! "$FILE_PATH" == *"Assets/Scripts/"* ]]; then
+# Check filename patterns
+if [[ "$FILENAME" =~ ^test[_\.].*$ ]] || [[ "$FILENAME" =~ .*[_\.]test\..*$ ]] || \
+   [[ "$FILENAME" =~ .*[_\.]spec\..*$ ]] || [[ "$FILENAME" =~ .*Tests\..*$ ]] || \
+   [[ "$FILENAME" =~ .*Test\..*$ ]] || [[ "$FILENAME" =~ .*_test\..*$ ]] || \
+   [[ "$FILENAME" =~ ^spec[_\.].*$ ]]; then
     exit 0
 fi
 

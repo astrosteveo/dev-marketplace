@@ -2,11 +2,15 @@
 
 Enforces structured question-asking using the `AskUserQuestion` tool with prefilled options to reduce cognitive load and help users who may feel overwhelmed or unsure how to articulate their thoughts.
 
+## Default Behavior
+
+**All questions require `AskUserQuestion` by default.** No configuration needed - the plugin works out of the box.
+
 ## Features
 
 - **Stop Hook**: Blocks Claude from asking questions without using `AskUserQuestion`
 - **Skill**: Guidance on crafting 3-4 thoughtful prefilled options
-- **Command**: `/guided-input:configure` to customize which question types enforce this behavior
+- **Command**: `/guided-input:configure` to disable enforcement for specific question types (optional)
 
 ## How It Works
 
@@ -24,18 +28,19 @@ The plugin recognizes three types of questions:
 
 Copy this plugin to your Claude Code plugins directory or reference it via the marketplace.
 
-## Configuration
+## Configuration (Optional)
 
-Run `/guided-input:configure` to customize which question types require `AskUserQuestion`. Settings are stored in `.claude/guided-input.local.md`.
+**You don't need to configure anything** - the plugin enforces `AskUserQuestion` for all questions by default.
 
-### Default Behavior
-
-By default, all question types require the `AskUserQuestion` tool.
+Run `/guided-input:configure` only if you want to **disable** enforcement for specific question types. This is an opt-out system.
 
 ### Configuration File Format
 
+Settings are stored in `.claude/guided-input.local.md`:
+
 ```markdown
 ---
+# true = enforce AskUserQuestion, false = exempt from enforcement
 enforceTypes:
   clarification: true
   decision: true
@@ -44,8 +49,11 @@ enforceTypes:
 
 # Guided Input Configuration
 
-This file configures which question types require the AskUserQuestion tool.
+All question types require AskUserQuestion by default.
+Set a type to `false` to exempt it from enforcement.
 ```
+
+**No config file = enforce for all types (recommended default).**
 
 ## Usage Example
 

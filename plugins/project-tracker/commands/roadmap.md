@@ -1,5 +1,4 @@
 ---
-name: roadmap
 description: View and manage your project roadmap
 argument-hint: "[view|add|move|done]"
 allowed-tools:

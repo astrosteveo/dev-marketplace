@@ -1,5 +1,4 @@
 ---
-name: discover
 description: Decompose a project idea into prioritized features
 argument-hint: "<project idea or topic>"
 allowed-tools:

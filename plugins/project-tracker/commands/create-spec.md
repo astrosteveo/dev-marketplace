@@ -1,5 +1,4 @@
 ---
-name: create-spec
 description: Create a detailed spec for a feature
 argument-hint: "<feature name or description>"
 allowed-tools:

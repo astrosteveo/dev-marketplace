@@ -1,5 +1,4 @@
 ---
-name: tracker-init
 description: Initialize project-tracker in current project
 allowed-tools:
   - Write

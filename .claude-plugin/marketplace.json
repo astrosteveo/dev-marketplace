@@ -31,6 +31,17 @@
       },
       "keywords": ["roadmap", "planning", "specs", "feature-dev", "project-management"],
       "category": "development"
+    },
+    {
+      "name": "guided-input",
+      "source": "./plugins/guided-input",
+      "description": "Enforces structured question-asking using AskUserQuestion with prefilled options to reduce cognitive load",
+      "version": "1.0.0",
+      "author": {
+        "name": "AstroSteveo"
+      },
+      "keywords": ["questions", "ux", "accessibility", "workflow", "AskUserQuestion"],
+      "category": "workflow"
     }
   ]
 }

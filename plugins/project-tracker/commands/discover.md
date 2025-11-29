@@ -110,21 +110,21 @@ After updating ROADMAP.md, recommend:
 >
 > **Recommended next step:**
 > ```
-> /create-spec {First MVP Feature}
+> /project-tracker:create-spec {First MVP Feature}
 > ```
-> This will create a detailed spec with acceptance criteria you can implement with `/feature-dev`.
+> This will create a detailed spec with acceptance criteria you can implement with `/feature-dev:feature-dev`.
 
 ## Tips
 
 - If user seems overwhelmed, slow down and focus on just the MVP
 - Use analogies to familiar products when helpful
 - Celebrate the clarity that emerges from good decomposition
-- Remind users: "You can always `/discover` again to add more features later"
+- Remind users: "You can always `/project-tracker:discover` again to add more features later"
 
 ## Edge Cases
 
 **No ROADMAP.md exists:**
-Run `/tracker-init` first, or create it inline.
+Run `/project-tracker:tracker-init` first, or create it inline.
 
 **User idea is too vague:**
 Ask more clarifying questions. "Tell me more about [aspect]."

@@ -90,7 +90,7 @@ Active section format:
 >
 > **Ready to implement?**
 > ```
-> /feature-dev Implement {Feature Name} per spec in .claude/specs/{feature-name}.md
+> /feature-dev:feature-dev Implement {Feature Name} per spec in .claude/specs/{feature-name}.md
 > ```
 >
 > **Or review the spec first:**
@@ -99,7 +99,7 @@ Active section format:
 ## Edge Cases
 
 **No ROADMAP.md exists:**
-Prompt user to run `/tracker-init` first.
+Prompt user to run `/project-tracker:tracker-init` first.
 
 **Feature already has a spec:**
 Ask if user wants to:

@@ -24,7 +24,7 @@ Set up project-tracker in the current project by creating the necessary files an
 
 ## Active
 
-_No active stories. Use `/create-spec` to create one, or `/discover` to plan your project._
+_No active stories. Use `/project-tracker:create-spec` to create one, or `/project-tracker:discover` to plan your project._
 
 ## Done
 
@@ -69,6 +69,6 @@ _Notes from current work session._
 > - `.claude/project-tracker.local.md` - Session state tracking
 >
 > **Next steps:**
-> - `/discover` - Break down your project idea into features
-> - `/create-spec <feature>` - Create a spec for a specific feature
-> - `/roadmap` - View your roadmap
+> - `/project-tracker:discover` - Break down your project idea into features
+> - `/project-tracker:create-spec <feature>` - Create a spec for a specific feature
+> - `/project-tracker:roadmap` - View your roadmap

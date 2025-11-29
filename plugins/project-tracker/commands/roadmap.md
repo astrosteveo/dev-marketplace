@@ -31,7 +31,7 @@ Display current roadmap status in a compact format:
 **Done:** {N} stories completed
 **Backlog:** {M} stories planned
 
-Use `/roadmap add`, `/roadmap move`, or `/roadmap done` to update.
+Use `/project-tracker:roadmap add`, `/project-tracker:roadmap move`, or `/project-tracker:roadmap done` to update.
 ```
 
 If no active story:
@@ -46,7 +46,7 @@ If no active story:
   • {Second backlog item}
   • ...
 
-Use `/create-spec <feature>` to start working on a backlog item.
+Use `/project-tracker:create-spec <feature>` to start working on a backlog item.
 ```
 
 ### `/roadmap add`
@@ -69,7 +69,7 @@ Add a new item to the backlog.
 ```
 
 4. Confirm:
-> Added **{Feature Name}** to backlog. Use `/create-spec {Feature Name}` when ready to detail it.
+> Added **{Feature Name}** to backlog. Use `/project-tracker:create-spec {Feature Name}` when ready to detail it.
 
 ### `/roadmap move`
 
@@ -82,7 +82,7 @@ Move an item between sections (Backlog ↔ Active, Active → Done).
 2. Edit ROADMAP.md to relocate the section
 
 3. If moving to Active:
-   - Check if spec exists, if not recommend `/create-spec`
+   - Check if spec exists, if not recommend `/project-tracker:create-spec`
    - Update .claude/project-tracker.local.md
 
 4. If moving to Done:
@@ -98,7 +98,7 @@ Mark the current active story as complete.
 1. Read current active story from ROADMAP.md or .local.md
 
 2. If no active story:
-   > "No active story to mark done. Use `/roadmap view` to see status."
+   > "No active story to mark done. Use `/project-tracker:roadmap view` to see status."
 
 3. If active story exists:
    - Ask for confirmation: "Mark **{Story Name}** as complete?"
@@ -115,12 +115,12 @@ Mark the current active story as complete.
    > **Next up from backlog:**
    > • {Next backlog item}
    >
-   > Use `/create-spec {Next item}` to continue.
+   > Use `/project-tracker:create-spec {Next item}` to continue.
 
 6. If backlog is empty:
    > **{Story Name}** marked complete! 🎉
    >
-   > Backlog is empty. Use `/discover` to plan more features or `/roadmap add` to add individual items.
+   > Backlog is empty. Use `/project-tracker:discover` to plan more features or `/project-tracker:roadmap add` to add individual items.
 
 ## ROADMAP.md Format Reference
 
@@ -160,7 +160,7 @@ _Completed: 2024-01-20_
 ## Edge Cases
 
 **ROADMAP.md doesn't exist:**
-> "No ROADMAP.md found. Run `/tracker-init` to set up project-tracker."
+> "No ROADMAP.md found. Run `/project-tracker:tracker-init` to set up project-tracker."
 
 **Multiple active stories:**
 This shouldn't happen, but if it does:

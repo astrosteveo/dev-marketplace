@@ -7,7 +7,7 @@ A Claude Code plugin for project planning and tracking that integrates with the 
 Project Tracker helps you go from vague idea to shipped features:
 
 ```
-Idea → /discover → Feature Breakdown → /create-spec → /feature-dev → Done
+Idea → /project-tracker:discover → Feature Breakdown → /project-tracker:create-spec → /feature-dev:feature-dev → Done
 ```
 
 ## Features
@@ -21,31 +21,31 @@ Idea → /discover → Feature Breakdown → /create-spec → /feature-dev → D
 
 | Command | Description |
 |---------|-------------|
-| `/tracker-init` | Initialize project-tracker in current project |
-| `/discover` | Decompose a project idea into features |
-| `/create-spec <feature>` | Create detailed spec for a feature |
-| `/roadmap [view\|add\|move\|done]` | Manage your roadmap |
+| `/project-tracker:tracker-init` | Initialize project-tracker in current project |
+| `/project-tracker:discover` | Decompose a project idea into features |
+| `/project-tracker:create-spec <feature>` | Create detailed spec for a feature |
+| `/project-tracker:roadmap [view\|add\|move\|done]` | Manage your roadmap |
 
 ## Quick Start
 
 1. Initialize in your project:
    ```
-   /tracker-init
+   /project-tracker:tracker-init
    ```
 
 2. Discover features for your idea:
    ```
-   /discover I want to build a space simulation game
+   /project-tracker:discover I want to build a space simulation game
    ```
 
 3. Create a spec for the first feature:
    ```
-   /create-spec Basic Ship & Movement
+   /project-tracker:create-spec Basic Ship & Movement
    ```
 
 4. Build it with feature-dev:
    ```
-   /feature-dev Implement Basic Ship & Movement per spec
+   /feature-dev:feature-dev Implement Basic Ship & Movement per spec
    ```
 
 ## File Structure
@@ -65,9 +65,9 @@ your-project/
 
 Project Tracker is designed to complement the [feature-dev plugin](https://github.com/anthropics/claude-code/tree/main/plugins/feature-dev):
 
-1. **Before feature-dev**: Use `/discover` and `/create-spec` to define what to build
-2. **During feature-dev**: Spec file provides context and acceptance criteria
-3. **After feature-dev**: `/roadmap done` marks the story complete
+1. **Before feature-dev**: Use `/project-tracker:discover` and `/project-tracker:create-spec` to define what to build
+2. **During feature-dev:feature-dev**: Spec file provides context and acceptance criteria
+3. **After feature-dev:feature-dev**: `/project-tracker:roadmap done` marks the story complete
 
 ## Session Continuity
 

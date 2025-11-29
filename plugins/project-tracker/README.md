@@ -21,7 +21,7 @@ Idea → /discover → Feature Breakdown → /create-spec → /feature-dev → D
 
 | Command | Description |
 |---------|-------------|
-| `/init` | Initialize project-tracker in current project |
+| `/tracker-init` | Initialize project-tracker in current project |
 | `/discover` | Decompose a project idea into features |
 | `/create-spec <feature>` | Create detailed spec for a feature |
 | `/roadmap [view\|add\|move\|done]` | Manage your roadmap |
@@ -30,7 +30,7 @@ Idea → /discover → Feature Breakdown → /create-spec → /feature-dev → D
 
 1. Initialize in your project:
    ```
-   /init
+   /tracker-init
    ```
 
 2. Discover features for your idea:

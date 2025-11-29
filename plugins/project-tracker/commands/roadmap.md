@@ -160,7 +160,7 @@ _Completed: 2024-01-20_
 ## Edge Cases
 
 **ROADMAP.md doesn't exist:**
-> "No ROADMAP.md found. Run `/init` to set up project-tracker."
+> "No ROADMAP.md found. Run `/tracker-init` to set up project-tracker."
 
 **Multiple active stories:**
 This shouldn't happen, but if it does:

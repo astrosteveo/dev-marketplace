@@ -124,7 +124,7 @@ After updating ROADMAP.md, recommend:
 ## Edge Cases
 
 **No ROADMAP.md exists:**
-Run `/init` first, or create it inline.
+Run `/tracker-init` first, or create it inline.
 
 **User idea is too vague:**
 Ask more clarifying questions. "Tell me more about [aspect]."

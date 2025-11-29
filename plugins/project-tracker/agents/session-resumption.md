@@ -68,7 +68,7 @@ If no ROADMAP.md exists:
 ```
 📍 **Project Tracker**
 
-Not initialized. Use `/init` to set up project tracking.
+Not initialized. Use `/tracker-init` to set up project tracking.
 ```
 
 ## Guidelines

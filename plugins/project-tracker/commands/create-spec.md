@@ -99,7 +99,7 @@ Active section format:
 ## Edge Cases
 
 **No ROADMAP.md exists:**
-Prompt user to run `/init` first.
+Prompt user to run `/tracker-init` first.
 
 **Feature already has a spec:**
 Ask if user wants to:

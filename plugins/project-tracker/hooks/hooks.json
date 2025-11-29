@@ -1,13 +1,37 @@
 {
-  "description": "Project tracker session hooks for context loading",
+  "description": "Project tracker hooks for session lifecycle and feature completion detection",
   "hooks": {
     "SessionStart": [
       {
         "matcher": "*",
         "hooks": [
           {
+            "type": "prompt",
+            "prompt": "You are a session resumption hook that provides project context at session start.\n\n## Your Task\n\nCheck if project-tracker is being used and provide concise session context.\n\n## Detection\n\n1. Check if ROADMAP.md exists in the current directory\n2. If it exists, look for:\n   - Active story (content under \"## Active\" section)\n   - Progress (count [x] vs [ ] checkboxes in Active section)\n   - Backlog items (content under \"## Backlog\" section)\n\n3. Optionally check .claude/project-tracker.local.md for:\n   - active_story field in frontmatter\n   - last_task field\n\n## Response Format\n\nAlways return approve. Add context only if ROADMAP.md exists:\n\n```json\n{\n  \"decision\": \"approve\",\n  \"hookSpecificOutput\": {\n    \"additionalContext\": \"<context-message>\"\n  }\n}\n```\n\n## Context Message Formats\n\n**If active story exists:**\n\"Session Resume: Working on **{story name}** ({completed}/{total} tasks). Use `/project-tracker:roadmap` to see full status.\"\n\n**If no active story but backlog exists:**\n\"Session Resume: No active story. {N} items in backlog. Use `/project-tracker:roadmap` to start one.\"\n\n**If no ROADMAP.md exists:**\nReturn approve with NO additionalContext (completely silent):\n```json\n{\n  \"decision\": \"approve\"\n}\n```\n\n## Important\n- Keep context message under 200 characters\n- Be completely silent if not using project-tracker (no ROADMAP.md)\n- Never block, always approve",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "prompt",
+            "prompt": "You are a hook that detects feature completion and triggers `/project-tracker:roadmap done`.\n\n## Detection Criteria\n\nCheck ALL of these conditions:\n\n1. **Todos Complete**: The most recent TodoWrite call shows ALL items with status \"completed\"\n   - If no TodoWrite was used in the conversation, return approve (not tracking with todos)\n   - If any item is \"pending\" or \"in_progress\", return approve (work still ongoing)\n   - If todo list is empty, return approve (not using todo tracking)\n\n2. **Active Story Exists**: ROADMAP.md exists AND has content in the \"## Active\" section\n   - If no ROADMAP.md, return approve (not using project-tracker)\n   - If Active section is empty or says \"None\", return approve (no story to mark done)\n\n3. **Implementation Work Occurred**: The conversation transcript shows actual implementation:\n   - Write tool used to create/modify code files\n   - Edit tool used to modify code\n   - Bash tool used for testing (npm test, pytest, etc.)\n   - NOT just planning, reading, or exploration\n\n4. **Not Already Done**: `/project-tracker:roadmap done` was NOT already run in this session\n\n## Response\n\n**If ALL criteria are met** (todos complete + active story + implementation work + not already done):\n```json\n{\n  \"decision\": \"block\",\n  \"reason\": \"Feature appears complete. Running /project-tracker:roadmap done to mark the story complete.\",\n  \"systemMessage\": \"All TodoWrite items are marked complete and there is an active story in ROADMAP.md. Use the SlashCommand tool to run `/project-tracker:roadmap done` to mark the story as complete and move it to Done.\"\n}\n```\n\n**If ANY criterion is NOT met:**\n```json\n{\n  \"decision\": \"approve\"\n}\n```\n\n## Important Rules\n\n- Be conservative: false negatives are better than false positives\n- Empty todo list = not tracking with todos (approve, don't trigger)\n- Missing ROADMAP.md = not using project-tracker (approve silently)\n- If user is just exploring or planning, don't trigger\n- The /project-tracker:roadmap done command will ask for user confirmation, so it's safe to trigger",
+            "timeout": 30
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
             "type": "command",
-            "command": "bash ${CLAUDE_PLUGIN_ROOT}/scripts/session-status.sh",
+            "command": "bash ${CLAUDE_PLUGIN_ROOT}/scripts/session-end.sh",
             "timeout": 5
           }
         ]

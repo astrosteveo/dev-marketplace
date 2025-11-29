@@ -5,6 +5,8 @@ allowed-tools:
   - Write
   - Bash
   - Read
+  - SlashCommand
+  - AskUserQuestion
 ---
 
 # Initialize Project Tracker
@@ -59,7 +61,7 @@ _Notes from current work session._
 .claude/*.local.md
 ```
 
-6. Confirm success:
+6. Confirm success and offer next step:
 
 > **Project Tracker initialized!**
 >
@@ -67,8 +69,16 @@ _Notes from current work session._
 > - `ROADMAP.md` - Your project roadmap
 > - `.claude/specs/` - Directory for detailed specs
 > - `.claude/project-tracker.local.md` - Session state tracking
->
-> **Next steps:**
-> - `/project-tracker:discover` - Break down your project idea into features
-> - `/project-tracker:create-spec <feature>` - Create a spec for a specific feature
-> - `/project-tracker:roadmap` - View your roadmap
+
+7. Use AskUserQuestion to offer next steps:
+   - Question: "What would you like to do next?"
+   - Options:
+     - "Discover features" - Break down a project idea into features
+     - "Create a spec" - Create a spec for a specific feature
+     - "View roadmap" - See your current roadmap
+     - "Nothing for now" - End here
+
+8. If user selects an action, use SlashCommand to run it:
+   - "Discover features" → `/project-tracker:discover`
+   - "Create a spec" → Ask what feature, then `/project-tracker:create-spec <feature>`
+   - "View roadmap" → `/project-tracker:roadmap`

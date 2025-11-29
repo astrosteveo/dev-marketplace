@@ -7,6 +7,8 @@ allowed-tools:
   - Write
   - Edit
   - Task
+  - SlashCommand
+  - AskUserQuestion
 ---
 
 # Create Spec
@@ -82,24 +84,32 @@ Active section format:
 📋 Spec: `.claude/specs/{feature-name}.md`
 ```
 
-### Step 6: Recommend Next Steps
+### Step 6: Offer Next Steps
 
 > **Spec created!**
 >
 > 📋 `.claude/specs/{feature-name}.md`
->
-> **Ready to implement?**
-> ```
-> /feature-dev:feature-dev Implement {Feature Name} per spec in .claude/specs/{feature-name}.md
-> ```
->
-> **Or review the spec first:**
-> Read the spec and let me know if you'd like to adjust any acceptance criteria.
+
+Then use AskUserQuestion: "What would you like to do next?"
+- Options:
+  - "Start implementing" - Begin working on this feature
+  - "Review the spec" - Read through and potentially adjust acceptance criteria
+  - "Done for now" - End here
+
+If user selects "Start implementing":
+- Use SlashCommand to run `/feature-dev:feature-dev Implement {Feature Name} per spec in .claude/specs/{feature-name}.md`
+
+If user selects "Review the spec":
+- Read and display the spec file, then ask if they'd like to make any adjustments
 
 ## Edge Cases
 
 **No ROADMAP.md exists:**
-Prompt user to run `/project-tracker:tracker-init` first.
+> "No ROADMAP.md found."
+
+Then use AskUserQuestion: "Would you like to initialize project-tracker first?"
+- Options: "Yes, initialize" / "No"
+- If yes, use SlashCommand to run `/project-tracker:tracker-init`
 
 **Feature already has a spec:**
 Ask if user wants to:

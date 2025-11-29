@@ -6,6 +6,8 @@ allowed-tools:
   - Read
   - Write
   - Edit
+  - SlashCommand
+  - AskUserQuestion
 ---
 
 # Project Discovery
@@ -102,17 +104,15 @@ Select and travel to destinations.
 - _Depends on: Star System View_
 ```
 
-### Phase 6: Recommend Next Step
+### Phase 6: Offer Next Step
 
-After updating ROADMAP.md, recommend:
+After updating ROADMAP.md:
 
 > **Discovery complete!** I've added {N} features to your backlog.
->
-> **Recommended next step:**
-> ```
-> /project-tracker:create-spec {First MVP Feature}
-> ```
-> This will create a detailed spec with acceptance criteria you can implement with `/feature-dev:feature-dev`.
+
+Then use AskUserQuestion: "Ready to create a spec for the first feature?"
+- Options: List the top 2-3 MVP features from the backlog, plus "No, I'll do it later"
+- If user selects a feature, use SlashCommand to run `/project-tracker:create-spec {selected feature}`
 
 ## Tips
 
@@ -124,7 +124,9 @@ After updating ROADMAP.md, recommend:
 ## Edge Cases
 
 **No ROADMAP.md exists:**
-Run `/project-tracker:tracker-init` first, or create it inline.
+Use AskUserQuestion: "No ROADMAP.md found. Initialize project-tracker first?"
+- Options: "Yes, initialize" / "No, I'll create it manually"
+- If yes, use SlashCommand to run `/project-tracker:tracker-init`, then continue with discovery
 
 **User idea is too vague:**
 Ask more clarifying questions. "Tell me more about [aspect]."

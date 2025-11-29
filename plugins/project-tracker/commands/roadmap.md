@@ -6,6 +6,8 @@ allowed-tools:
   - Read
   - Write
   - Edit
+  - SlashCommand
+  - AskUserQuestion
 ---
 
 # Roadmap Management
@@ -45,9 +47,11 @@ If no active story:
   • {First backlog item}
   • {Second backlog item}
   • ...
-
-Use `/project-tracker:create-spec <feature>` to start working on a backlog item.
 ```
+
+Then use AskUserQuestion: "Would you like to create a spec for one of these backlog items?"
+- Options: List the backlog items as options, plus "No, just viewing"
+- If user selects a backlog item, use SlashCommand to run `/project-tracker:create-spec {selected item}`
 
 ### `/roadmap add`
 
@@ -68,8 +72,12 @@ Add a new item to the backlog.
 - {Rough AC hint 2}
 ```
 
-4. Confirm:
-> Added **{Feature Name}** to backlog. Use `/project-tracker:create-spec {Feature Name}` when ready to detail it.
+4. Confirm and offer to create spec:
+> Added **{Feature Name}** to backlog.
+
+Then use AskUserQuestion: "Would you like to create a detailed spec for this feature now?"
+- Options: "Yes, create spec" / "No, I'll do it later"
+- If yes, use SlashCommand to run `/project-tracker:create-spec {Feature Name}`
 
 ### `/roadmap move`
 
@@ -82,7 +90,9 @@ Move an item between sections (Backlog ↔ Active, Active → Done).
 2. Edit ROADMAP.md to relocate the section
 
 3. If moving to Active:
-   - Check if spec exists, if not recommend `/project-tracker:create-spec`
+   - Check if spec exists
+   - If no spec exists, use AskUserQuestion: "This feature doesn't have a spec yet. Create one now?"
+     - If yes, use SlashCommand to run `/project-tracker:create-spec {Feature Name}`
    - Update .claude/project-tracker.local.md
 
 4. If moving to Done:
@@ -111,16 +121,20 @@ Mark the current active story as complete.
 
 5. If there are backlog items:
    > **{Story Name}** marked complete! 🎉
-   >
-   > **Next up from backlog:**
-   > • {Next backlog item}
-   >
-   > Use `/project-tracker:create-spec {Next item}` to continue.
+
+   Then use AskUserQuestion: "Ready to start the next feature?"
+   - Options: List top 2-3 backlog items, plus "No, I'll decide later"
+   - If user selects a feature, use SlashCommand to run `/project-tracker:create-spec {selected feature}`
 
 6. If backlog is empty:
    > **{Story Name}** marked complete! 🎉
    >
-   > Backlog is empty. Use `/project-tracker:discover` to plan more features or `/project-tracker:roadmap add` to add individual items.
+   > Backlog is empty.
+
+   Then use AskUserQuestion: "What would you like to do next?"
+   - Options: "Discover new features" / "Add a single feature" / "Nothing for now"
+   - "Discover new features" → use SlashCommand to run `/project-tracker:discover`
+   - "Add a single feature" → use SlashCommand to run `/project-tracker:roadmap add`
 
 ## ROADMAP.md Format Reference
 
@@ -160,7 +174,11 @@ _Completed: 2024-01-20_
 ## Edge Cases
 
 **ROADMAP.md doesn't exist:**
-> "No ROADMAP.md found. Run `/project-tracker:tracker-init` to set up project-tracker."
+> "No ROADMAP.md found."
+
+Then use AskUserQuestion: "Would you like to initialize project-tracker now?"
+- Options: "Yes, initialize" / "No"
+- If yes, use SlashCommand to run `/project-tracker:tracker-init`
 
 **Multiple active stories:**
 This shouldn't happen, but if it does:

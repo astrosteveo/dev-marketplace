@@ -67,7 +67,11 @@ Project Tracker is designed to complement the [feature-dev plugin](https://githu
 
 1. **Before feature-dev**: Use `/project-tracker:discover` and `/project-tracker:create-spec` to define what to build
 2. **During feature-dev:feature-dev**: Spec file provides context and acceptance criteria
-3. **After feature-dev:feature-dev**: `/project-tracker:roadmap done` marks the story complete
+3. **After feature-dev:feature-dev**: Automatically prompts to run `/project-tracker:roadmap done` when Phase 7 (Summary) completes
+
+### Auto-completion Hook
+
+When `/feature-dev:feature-dev` completes its workflow (Phase 7), a SubagentStop hook automatically detects completion and triggers `/project-tracker:roadmap done`. This marks the active story as complete and prompts you to start the next backlog item - keeping your workflow smooth and continuous.
 
 ## Session Continuity
 

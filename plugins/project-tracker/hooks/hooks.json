@@ -1,0 +1,17 @@
+{
+  "description": "Project tracker session hooks for context loading",
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ${CLAUDE_PLUGIN_ROOT}/scripts/session-status.sh",
+            "timeout": 5
+          }
+        ]
+      }
+    ]
+  }
+}

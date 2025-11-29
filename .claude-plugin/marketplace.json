@@ -20,6 +20,17 @@
       },
       "keywords": ["tdd", "testing", "red-green-refactor", "test-driven"],
       "category": "development"
+    },
+    {
+      "name": "project-tracker",
+      "source": "./plugins/project-tracker",
+      "description": "Project planning and tracking that integrates with feature-dev workflow. Discover features, create specs, track progress across sessions.",
+      "version": "0.1.0",
+      "author": {
+        "name": "AstroSteveo"
+      },
+      "keywords": ["roadmap", "planning", "specs", "feature-dev", "project-management"],
+      "category": "development"
     }
   ]
 }

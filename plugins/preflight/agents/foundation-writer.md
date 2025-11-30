@@ -84,24 +84,64 @@ project-name/
 
 ---
 
-## Next Steps
+## Implementation Roadmap
 
-### 1. Initialize Project
-- [ ] Run `git init` (if not already done)
-- [ ] Create folder structure
-- [ ] Initialize package manager ([npm init / cargo init / etc])
+Break down implementation into feature-dev sized chunks. Each phase is a separate `/feature-dev:feature-dev [phase]` command.
+
+### Phase 1: Project Setup
+**Goal:** Get the basic project structure and tooling in place
+- [ ] Initialize git repository
+- [ ] Create [folder/workspace structure from Project Structure section]
+- [ ] Set up package manager ([npm init / cargo init / etc])
 - [ ] Create .gitignore
+- [ ] Configure development environment
 
-### 2. Setup Dependencies
-- [ ] Install [framework]
-- [ ] Setup [database]
-- [ ] Configure [tools]
+**feature-dev command:**
+```bash
+/feature-dev:feature-dev Set up initial project structure from foundation.md
+```
 
-### 3. Create Initial Files
-- [ ] [Specific files based on project type]
+### Phase 2: Core Infrastructure
+**Goal:** [First foundational system - e.g., "Basic server", "Database models", "CLI argument parsing"]
+- [ ] [Specific task 1]
+- [ ] [Specific task 2]
+- [ ] [Specific task 3]
 
-### 4. Start Implementation
-Ready to use `/feature-dev` or start coding following this foundation.
+**feature-dev command:**
+```bash
+/feature-dev:feature-dev [Specific phase 2 goal from foundation.md]
+```
+
+### Phase 3: [Next System]
+**Goal:** [Second foundational system]
+- [ ] [Specific tasks]
+
+**feature-dev command:**
+```bash
+/feature-dev:feature-dev [Specific phase 3 goal from foundation.md]
+```
+
+### Phase 4-N: [Remaining Systems]
+[Continue breaking down based on project complexity]
+
+---
+
+## Quick Start Commands
+
+After reviewing this foundation, run phases sequentially:
+
+```bash
+# Phase 1: Setup
+/feature-dev:feature-dev Set up initial project structure from foundation.md
+
+# Phase 2: Core system
+/feature-dev:feature-dev [Core system from roadmap]
+
+# Phase 3+: Continue through roadmap
+/feature-dev:feature-dev [Next system from roadmap]
+```
+
+Or implement manually following this foundation.
 
 ---
 
@@ -222,6 +262,16 @@ Focus on:
 - Server/client structure
 - Testing multiplayer locally
 
+**Roadmap Phases:**
+1. Project Setup (Cargo workspace / monorepo)
+2. Core Server (Networking, connections, basic protocol)
+3. Game State System (World state, entity management)
+4. Physics/Movement (Based on their physics choice)
+5. Client Rendering (Graphics, input, prediction)
+6. State Synchronization (Delta compression, snapshots)
+7. Database Integration (If applicable)
+8. Deployment Setup (Containers, orchestration)
+
 ### Web App Foundation
 
 Focus on:
@@ -232,6 +282,15 @@ Focus on:
 - Deployment pipeline
 - Environment management (dev/staging/prod)
 
+**Roadmap Phases:**
+1. Project Setup (Monorepo / separate repos, tooling)
+2. Database Schema (Models, migrations, ORM setup)
+3. API Backend (Routes, controllers, middleware)
+4. Authentication (User system, sessions/JWT, routes)
+5. Frontend Structure (Components, routing, state management)
+6. API Integration (Connect frontend to backend)
+7. Deployment (CI/CD, hosting, environment config)
+
 ### CLI Tool Foundation
 
 Focus on:
@@ -241,6 +300,14 @@ Focus on:
 - Distribution method
 - Testing approach
 
+**Roadmap Phases:**
+1. Project Setup (Package structure, dependencies)
+2. Argument Parsing (CLI framework, command structure)
+3. Configuration System (Config file parsing, defaults)
+4. Core Logic (Main functionality)
+5. Error Handling (User-friendly messages, exit codes)
+6. Distribution (Binary building, packaging, installation)
+
 ### Script Foundation
 
 Keep it minimal:
@@ -249,13 +316,21 @@ Keep it minimal:
 - Where it runs
 - How to execute
 
+**Roadmap Phases:**
+1. Project Setup (Dependencies, shebang)
+2. Input Handling (Arguments, environment variables)
+3. Core Logic (Main script functionality)
+4. Output/Error Handling (Formatting, logging)
+
 ## Important Guidelines
 
 **Be specific** - "Use React with Vite and TypeScript" not "modern frontend"
 **Include rationale** - Always explain WHY decisions were made
 **Provide structure** - Concrete folder structure, not vague "organize well"
-**Give next steps** - Exact commands and actions to take
+**Create actionable roadmap** - Break implementation into feature-dev sized chunks (5-15 tasks per phase)
+**Give exact commands** - Show the exact `/feature-dev:feature-dev [phase]` command for each phase
 **Warn about gotchas** - Anything important based on their choices
+**Order dependencies** - Phase 1 must complete before Phase 2, etc.
 
 ## Success Criteria
 

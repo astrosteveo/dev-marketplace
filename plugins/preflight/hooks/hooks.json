@@ -6,7 +6,18 @@
         "hooks": [
           {
             "type": "prompt",
-            "prompt": "Check if there's an active preflight planning session by looking for `.preflight-state.json`. If it exists and phase is not 'complete':\n\n1. Read the state file to see current progress\n2. Save any recent decisions if needed\n3. Return an error blocking compaction with:\n\n```\nPreflight planning in progress. To prevent losing decisions:\n\n1. Your progress is saved in .preflight-state.json\n2. Current phase: [show phase from state]\n3. Decisions made: [count]\n4. Please run /clear or /new to start fresh\n5. Then run /preflight:plan again to resume\n\nCompaction blocked to preserve planning state.\n```\n\nIf no preflight state file exists or phase is 'complete', allow compaction to proceed normally."
+            "prompt": "Check if there's an active preflight planning session by looking for `ROADMAP.md` and reading its YAML frontmatter.\n\nIf ROADMAP.md exists and phase is 'planning' or 'planning_complete':\n\n1. Read the ROADMAP.md frontmatter to see current progress\n2. Count how many decisions have been made\n3. Return an error blocking compaction with:\n\n```\nPreflight planning in progress. To prevent losing decisions:\n\n1. Your progress is saved in ROADMAP.md frontmatter\n2. Current phase: [show phase from frontmatter]\n3. Decisions made: [count from decisions array]\n4. Please run /clear or /new to start fresh\n5. Then run /preflight:plan again to resume\n\nCompaction blocked to preserve planning state.\n```\n\nIf no ROADMAP.md exists or phase is 'implementation', allow compaction to proceed normally."
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": ".*",
+        "hooks": [
+          {
+            "type": "prompt",
+            "prompt": "After ANY work is completed (Write, Edit, Task with feature-dev, etc.), check if ROADMAP.md exists.\n\nIf ROADMAP.md exists and phase is 'implementation':\n\n1. Read ROADMAP.md to see:\n   - Current phase from roadmap_status in frontmatter\n   - All checkbox tasks in Implementation Roadmap section\n   \n2. Analyze what was just accomplished based on:\n   - Tool used (Write created X files, Edit modified Y, Task implemented Z)\n   - File paths involved\n   - Content of work done\n   \n3. Determine which checkboxes should be marked complete:\n   - Match accomplished work to unchecked tasks\n   - Be conservative - only check tasks that were FULLY completed\n   - If unsure, leave unchecked\n   \n4. Update ROADMAP.md:\n   - Change `- [ ]` to `- [x]` for completed tasks\n   - Update roadmap_status in frontmatter if entire phase complete:\n     - Count checked vs total tasks in phase\n     - If all tasks checked: status: complete\n     - If some tasks checked: status: in_progress\n   - Update phase field if moving to next phase\n   \n5. Write updated ROADMAP.md back\n\n6. Report to user:\n```\n✓ ROADMAP.md updated\n\nPhase [N]: [Phase Name]\n✓ Completed: [task 1]\n✓ Completed: [task 2]\n⏳ Remaining: [X tasks]\n\nNext: [Next unchecked task or next phase]\n```\n\nIf ROADMAP.md doesn't exist or phase is 'planning', skip this hook."
           }
         ]
       }

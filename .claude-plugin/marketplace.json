@@ -31,6 +31,17 @@
       },
       "keywords": ["questions", "ux", "accessibility", "workflow", "AskUserQuestion"],
       "category": "workflow"
+    },
+    {
+      "name": "feature-dev-plus",
+      "source": "./plugins/feature-dev-plus",
+      "description": "Enhanced feature development with discovery mode, spec-driven workflow, state persistence, and context-aware resumption",
+      "version": "0.1.0",
+      "author": {
+        "name": "AstroSteveo"
+      },
+      "keywords": ["feature-development", "workflow", "spec-driven", "tdd", "state-management", "discovery"],
+      "category": "development"
     }
   ]
 }

@@ -28,6 +28,26 @@ You have an idea, but you don't know:
 
 The plugin **auto-detects** how much guidance you need based on your input specificity.
 
+## Who This Is For
+
+**This plugin is for builders who think in iterations, not one-shots.**
+
+### ✅ You should use this if:
+- You're building a **long-lasting, persistent project** you'll iterate on
+- You want to **validate core value** before adding bells and whistles
+- You're willing to **ship small, learn, then expand**
+- You understand MVPs are **learning tools**, not finished products
+- You're building something you'll **maintain and grow over time**
+
+### ❌ This is NOT for:
+- **Vibecoders** trying to prompt-engineer a complete product in one session
+- One-shot "build me a full SaaS in 30 minutes" attempts
+- Projects you'll abandon after the first version
+- People who think MVP means "barely functional prototype"
+- Weekend hackathons where you just need something working NOW
+
+**The philosophy:** This plugin helps you build the *right* thing by starting small and learning. If you're trying to build everything at once, you're doing it wrong—and this plugin will slow you down (intentionally).
+
 ## Usage
 
 ### Basic Usage

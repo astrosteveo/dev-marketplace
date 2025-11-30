@@ -1,0 +1,10 @@
+{
+  "name": "feature-dev-plus",
+  "version": "0.1.0",
+  "description": "Enhanced feature development workflow with discovery mode, spec-driven development, state persistence, and context-aware resumption",
+  "author": {
+    "name": "Claude Code",
+    "email": "noreply@anthropic.com"
+  },
+  "keywords": ["feature-development", "workflow", "spec-driven", "tdd", "state-management"]
+}

@@ -1,5 +1,4 @@
 ---
-name: plan
 description: Transform vague ideas into concrete MVP specifications with guided discovery and prioritization
 argument-hint: "[optional: your product idea]"
 allowed-tools:

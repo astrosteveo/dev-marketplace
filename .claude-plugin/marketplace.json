@@ -11,17 +11,6 @@
   },
   "plugins": [
     {
-      "name": "project-tracker",
-      "source": "./plugins/project-tracker",
-      "description": "Project planning and tracking that integrates with feature-dev workflow. Discover features, create specs, track progress across sessions.",
-      "version": "0.1.0",
-      "author": {
-        "name": "AstroSteveo"
-      },
-      "keywords": ["roadmap", "planning", "specs", "feature-dev", "project-management"],
-      "category": "development"
-    },
-    {
       "name": "guided-input",
       "source": "./plugins/guided-input",
       "description": "Enforces structured question-asking using AskUserQuestion with prefilled options to reduce cognitive load",
@@ -31,17 +20,6 @@
       },
       "keywords": ["questions", "ux", "accessibility", "workflow", "AskUserQuestion"],
       "category": "workflow"
-    },
-    {
-      "name": "feature-dev-plus",
-      "source": "./plugins/feature-dev-plus",
-      "description": "Enhanced feature development with discovery mode, spec-driven workflow, state persistence, and context-aware resumption",
-      "version": "0.1.0",
-      "author": {
-        "name": "AstroSteveo"
-      },
-      "keywords": ["feature-development", "workflow", "spec-driven", "tdd", "state-management", "discovery"],
-      "category": "development"
     },
     {
       "name": "mvp-planner",

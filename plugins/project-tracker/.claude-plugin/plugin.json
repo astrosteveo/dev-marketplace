@@ -1,9 +1,0 @@
-{
-  "name": "project-tracker",
-  "version": "0.1.0",
-  "description": "Project planning and tracking that integrates with feature-dev workflow. Discover features, create specs, track progress across sessions. Auto-marks stories done when feature-dev completes.",
-  "author": {
-    "name": "astrosteveo"
-  },
-  "keywords": ["roadmap", "planning", "specs", "feature-dev", "project-management"]
-}

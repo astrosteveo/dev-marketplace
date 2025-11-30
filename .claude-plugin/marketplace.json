@@ -42,6 +42,17 @@
       },
       "keywords": ["feature-development", "workflow", "spec-driven", "tdd", "state-management", "discovery"],
       "category": "development"
+    },
+    {
+      "name": "mvp-planner",
+      "source": "./plugins/mvp-planner",
+      "description": "Transform vague ideas into concrete MVP specifications with guided discovery, feature brainstorming, and intelligent prioritization",
+      "version": "0.1.0",
+      "author": {
+        "name": "AstroSteveo"
+      },
+      "keywords": ["mvp", "planning", "product-discovery", "prioritization", "spec-writing", "agile"],
+      "category": "development"
     }
   ]
 }

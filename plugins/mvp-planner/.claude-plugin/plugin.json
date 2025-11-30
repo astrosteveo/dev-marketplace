@@ -1,0 +1,18 @@
+{
+  "name": "mvp-planner",
+  "version": "0.1.0",
+  "description": "Transform vague ideas into concrete MVP specifications with guided discovery, feature brainstorming, and intelligent prioritization",
+  "author": {
+    "name": "AstroSteveo",
+    "email": "stevengmjr@gmail.com"
+  },
+  "keywords": [
+    "mvp",
+    "planning",
+    "product-discovery",
+    "prioritization",
+    "spec-writing",
+    "agile"
+  ],
+  "category": "development"
+}

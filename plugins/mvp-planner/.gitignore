@@ -1,0 +1,17 @@
+# User-specific settings
+.claude/*.local.md
+
+# State files (user-generated)
+.mvp-state.json
+mvp-spec.md
+
+# Node modules (if we add any utilities)
+node_modules/
+
+# Python cache (if we add any scripts)
+__pycache__/
+*.pyc
+
+# OS files
+.DS_Store
+Thumbs.db

@@ -1,9 +1,0 @@
-# User-specific plugin settings
-.claude/*.local.md
-
-# OS files
-.DS_Store
-Thumbs.db
-
-# ROADMAP.md and CLAUDE.md are tracked in git
-# They contain project decisions and progress

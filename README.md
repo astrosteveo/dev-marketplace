@@ -1,99 +1,29 @@
-# Dev Marketplace
+# dev-marketplace
 
-A Claude Code plugin marketplace for development and testing.
+Development workflow plugins for Claude Code.
+
+## Plugins
+
+### iterate
+
+TDD-enforced iterative development workflow with automatic ROADMAP.md management.
+
+**Workflow**: `Explore → Plan → [Red → Green → Refactor] → Verify → Commit`
+
+**Features**:
+- Interactive planning that produces a living ROADMAP.md
+- Hooks automatically update roadmap as you work
+- TDD enforcement with configurable strictness (strict/warn/off)
+- Integration with feature-dev for seamless development handoff
+- Specialized agents for each workflow phase
+
+**Command**: `/iterate`
 
 ## Installation
 
-Add this marketplace to Claude Code:
-
+```bash
+claude code plugin install dev-marketplace
 ```
-/plugin marketplace add astrosteveo/dev-marketplace
-```
-
-Or for local development:
-
-```
-/plugin marketplace add /path/to/dev-marketplace
-```
-
-## Available Plugins
-
-| Plugin | Description |
-|--------|-------------|
-| `example-plugin` | An example plugin demonstrating marketplace structure |
-
-## Installing Plugins
-
-After adding the marketplace, install plugins with:
-
-```
-/plugin install example-plugin@dev-marketplace
-```
-
-## Marketplace Structure
-
-```
-dev-marketplace/
-├── .claude-plugin/
-│   └── marketplace.json     # Marketplace manifest
-├── plugins/
-│   └── example-plugin/
-│       ├── .claude-plugin/
-│       │   └── plugin.json  # Plugin manifest
-│       ├── commands/        # Slash commands
-│       │   └── hello.md
-│       ├── skills/          # Agent skills
-│       │   └── greeting/
-│       │       └── SKILL.md
-│       ├── agents/          # Custom agents
-│       │   └── helper.md
-│       └── hooks/           # Event hooks
-│           └── hooks.json
-└── README.md
-```
-
-## Creating New Plugins
-
-1. Create a new directory under `plugins/`
-2. Add `.claude-plugin/plugin.json` with plugin metadata
-3. Add your commands, skills, agents, or hooks
-4. Register the plugin in `.claude-plugin/marketplace.json`
-
-## Plugin Components
-
-### Commands (`commands/*.md`)
-
-Custom slash commands with frontmatter description:
-
-```markdown
----
-description: Brief description of the command
----
-
-# Command Name
-
-Instructions for Claude when command is invoked.
-```
-
-### Skills (`skills/*/SKILL.md`)
-
-Agent skills that Claude uses autonomously based on context.
-
-### Agents (`agents/*.md`)
-
-Specialized assistant configurations for specific tasks.
-
-### Hooks (`hooks/hooks.json`)
-
-Event-driven automation handlers.
-
-## Management Commands
-
-- `/plugin marketplace list` - List installed marketplaces
-- `/plugin marketplace update dev-marketplace` - Update marketplace
-- `/plugin marketplace remove dev-marketplace` - Remove marketplace
-- `/plugin list` - List installed plugins
-- `/plugin enable/disable <plugin>` - Toggle plugins
 
 ## License
 

@@ -1,0 +1,15 @@
+# Local plugin settings
+.claude/*.local.md
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor directories
+.idea/
+*.swp
+*.swo
+*~
+
+# Node modules (if any scripts use them)
+node_modules/

@@ -1,46 +1,22 @@
 {
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "dev-marketplace",
-  "metadata": {
-    "description": "Development marketplace for Claude Code plugins",
-    "version": "1.0.0",
-    "pluginRoot": "./plugins"
-  },
+  "version": "1.0.0",
+  "description": "Development workflow plugins for Claude Code - iterate through Explore, Plan, Red-Green-Refactor, Verify, Commit",
   "owner": {
-    "name": "AstroSteveo",
-    "email": "stevengmjr@gmail.com"
+    "name": "astrosteveo",
+    "email": "astrosteveo@users.noreply.github.com"
   },
   "plugins": [
     {
-      "name": "guided-input",
-      "source": "./plugins/guided-input",
-      "description": "Enforces structured question-asking using AskUserQuestion with prefilled options to reduce cognitive load",
+      "name": "iterate",
+      "description": "TDD-enforced iterative development workflow: Explore → Plan → Red → Green → Refactor → Verify → Commit. One command to master them all.",
       "version": "1.0.0",
       "author": {
-        "name": "AstroSteveo"
+        "name": "astrosteveo",
+        "email": "astrosteveo@users.noreply.github.com"
       },
-      "keywords": ["questions", "ux", "accessibility", "workflow", "AskUserQuestion"],
-      "category": "workflow"
-    },
-    {
-      "name": "mvp-planner",
-      "source": "./plugins/mvp-planner",
-      "description": "Transform vague ideas into concrete MVP specifications with guided discovery, feature brainstorming, and intelligent prioritization",
-      "version": "0.1.0",
-      "author": {
-        "name": "AstroSteveo"
-      },
-      "keywords": ["mvp", "planning", "product-discovery", "prioritization", "spec-writing", "agile"],
-      "category": "development"
-    },
-    {
-      "name": "preflight",
-      "source": "./plugins/preflight",
-      "description": "Make all foundational technical decisions before coding to prevent mid-implementation chaos",
-      "version": "0.1.0",
-      "author": {
-        "name": "AstroSteveo"
-      },
-      "keywords": ["technical-planning", "architecture", "decisions", "foundation", "setup", "tech-stack"],
+      "source": "./plugins/iterate",
       "category": "development"
     }
   ]

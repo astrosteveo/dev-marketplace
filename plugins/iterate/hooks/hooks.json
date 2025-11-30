@@ -1,0 +1,41 @@
+{
+  "description": "Iterate plugin hooks for ROADMAP.md management and TDD enforcement",
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "prompt",
+            "prompt": "Analyze this tool use to determine if ROADMAP.md should be updated.\n\n**Tool Used**: $TOOL_NAME\n**Tool Input**: $TOOL_INPUT\n**Tool Result**: $TOOL_RESULT\n\n**Instructions**:\n1. Check if ROADMAP.md exists in the project\n2. Determine if this tool use represents meaningful progress on the current feature\n3. If it does, describe what ROADMAP.md update is needed\n\n**Criteria for updates**:\n- Test file created/modified -> Update test checkboxes and status\n- Implementation file created/modified -> Update Green phase progress\n- Git commit made -> Update Commit phase\n- Exploration activity (Read, Grep, Glob on codebase) -> Note in Explore phase\n- Planning document created -> Update Plan phase\n\n**Criteria for NO update** (respond with 'no-update'):\n- Routine file reads unrelated to feature work\n- Internal Claude operations\n- Already reflected in ROADMAP.md\n- Tool use failed or was rejected\n\n**Response format**:\nIf update needed: Describe the specific ROADMAP.md change (e.g., 'Mark unit test checkbox as complete', 'Update test status to Pass')\nIf no update needed: Respond with exactly 'no-update'",
+            "timeout": 30
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "prompt",
+            "prompt": "**TDD Enforcement Check**\n\n**File being written/edited**: Check $TOOL_INPUT for file_path\n**Operation**: $TOOL_NAME\n\n**Instructions**:\n1. First, check if ROADMAP.md exists - if not, allow (not in iterate workflow)\n2. Read ROADMAP.md to determine current phase\n3. Check .claude/iterate.local.md for strictness setting (default: 'warn')\n4. Apply TDD enforcement rules\n\n**TDD Enforcement Rules**:\n\n**In Red Phase (writing tests)**:\n- ALLOW: Writing to test directories (tests/, test/, spec/, __tests__)\n- ALLOW: Writing test files (*_test.*, *.test.*, *_spec.*, *.spec.*)\n- BLOCK (if strict): Writing to src/, lib/, implementation directories\n\n**In Green Phase (implementing)**:\n- ALLOW: Any implementation files (tests should exist already)\n- VERIFY: Tests exist for this feature\n\n**Strictness levels** (from .claude/iterate.local.md):\n- strict: BLOCK implementation without tests, return 'deny'\n- warn: ALLOW but return systemMessage warning\n- off: ALLOW without warning\n\n**Response format**:\n- If allowed: Return JSON with permissionDecision='allow'\n- If blocked (strict mode): Return JSON with permissionDecision='deny' and reason\n- If warning (warn mode): Return JSON with permissionDecision='allow' and systemMessage with warning\n\nExample responses:\n```json\n{\"hookSpecificOutput\": {\"permissionDecision\": \"allow\"}, \"systemMessage\": \"TDD check passed\"}\n```\n```json\n{\"hookSpecificOutput\": {\"permissionDecision\": \"deny\"}, \"systemMessage\": \"TDD violation: Cannot write implementation in Red phase. Write tests first.\"}\n```\n```json\n{\"hookSpecificOutput\": {\"permissionDecision\": \"allow\"}, \"systemMessage\": \"Warning: Writing implementation before tests exist. Consider writing tests first.\"}\n```",
+            "timeout": 30
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ${CLAUDE_PLUGIN_ROOT}/hooks/scripts/session-start.sh",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}

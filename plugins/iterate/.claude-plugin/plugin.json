@@ -1,0 +1,10 @@
+{
+  "name": "iterate",
+  "version": "1.0.0",
+  "description": "TDD-enforced iterative development workflow: Explore → Plan → Red → Green → Refactor → Verify → Commit",
+  "author": {
+    "name": "astrosteveo",
+    "email": "astrosteveo@users.noreply.github.com"
+  },
+  "keywords": ["tdd", "workflow", "testing", "roadmap", "iterative", "red-green-refactor"]
+}

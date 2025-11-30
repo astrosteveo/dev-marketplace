@@ -1,0 +1,17 @@
+{
+  "name": "preflight",
+  "version": "0.1.0",
+  "description": "Make all foundational technical decisions before coding to prevent mid-implementation chaos",
+  "author": {
+    "name": "AstroSteveo",
+    "email": "stevengmjr@gmail.com"
+  },
+  "keywords": [
+    "planning",
+    "architecture",
+    "technical-decisions",
+    "setup",
+    "foundation"
+  ],
+  "category": "development"
+}

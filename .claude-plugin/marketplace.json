@@ -31,6 +31,17 @@
       },
       "keywords": ["mvp", "planning", "product-discovery", "prioritization", "spec-writing", "agile"],
       "category": "development"
+    },
+    {
+      "name": "preflight",
+      "source": "./plugins/preflight",
+      "description": "Make all foundational technical decisions before coding to prevent mid-implementation chaos",
+      "version": "0.1.0",
+      "author": {
+        "name": "AstroSteveo"
+      },
+      "keywords": ["technical-planning", "architecture", "decisions", "foundation", "setup", "tech-stack"],
+      "category": "development"
     }
   ]
 }

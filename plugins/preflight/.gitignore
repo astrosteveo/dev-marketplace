@@ -1,0 +1,11 @@
+# User-specific settings
+.claude/*.local.md
+
+# State files (user-generated)
+.preflight-state.json
+foundation.md
+CLAUDE.md
+
+# OS files
+.DS_Store
+Thumbs.db

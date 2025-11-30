@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "PreCompact": [
+      {
+        "matcher": ".*",
+        "hooks": [
+          {
+            "type": "prompt",
+            "prompt": "Check if there's an active preflight planning session by looking for `.preflight-state.json`. If it exists and phase is not 'complete':\n\n1. Read the state file to see current progress\n2. Save any recent decisions if needed\n3. Return an error blocking compaction with:\n\n```\nPreflight planning in progress. To prevent losing decisions:\n\n1. Your progress is saved in .preflight-state.json\n2. Current phase: [show phase from state]\n3. Decisions made: [count]\n4. Please run /clear or /new to start fresh\n5. Then run /preflight:plan again to resume\n\nCompaction blocked to preserve planning state.\n```\n\nIf no preflight state file exists or phase is 'complete', allow compaction to proceed normally."
+          }
+        ]
+      }
+    ]
+  }
+}
